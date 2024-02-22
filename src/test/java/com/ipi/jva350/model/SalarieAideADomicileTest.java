@@ -2,8 +2,11 @@ package com.ipi.jva350.model;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
 
 
 public class SalarieAideADomicileTest {
@@ -52,12 +55,48 @@ public class SalarieAideADomicileTest {
 
 
 
-                            //Tests paramétrés
- /*   @Test
-    public void testCalculeJoursDeCongeDecomptesPourPlage(String numeroSecu, Boolean expected) {
-            // Given, When, Then
-            Assertions.assertEquals(expected, Patient.checkNumeroSecu(numeroSecu));
-        }
+ @Test
+ @ParameterizedTest
+  public void testCalculeJoursDeCongeDecomptesPourPlage()  {
+      SalarieAideADomicile monSalarie = new SalarieAideADomicile(
+                     "Léa",
+                     LocalDate.of(2023,6,28),
+                     LocalDate.now(),
+                    20,
+                    5,
+                    9,
+                    15,
+                    8);
+                    // When : Comportement à tester, en pratique une (ou des) méthode(s) à exécuter
+                    LinkedHashSet<LocalDate> res = monSalarie.calculeJoursDeCongeDecomptesPourPlage(LocalDate.of(2023,12,17),
+                    LocalDate.of(2023,12,28));
+                    // Then : Comparaison du résultat de la méthode ou de l'état final avec celui attendu
+                    Assertions.assertEquals(9,res.size());
+                            }
 
-*/
+
+                        //Tests paramétrés
+
+    @ParameterizedTest
+    @CsvSource({
+            "'2023-12-17','2023-12-28',9",
+            "'2023-12-17','2024-01-08',17",
+    })
+     void testCalculeJoursDeCongeDecomptesPourPlage(String dateDebut,String dateFin, int expectedNb)  {
+        SalarieAideADomicile monSalarie = new SalarieAideADomicile(
+       "Léa",
+       LocalDate.of(2023,6,28),
+       LocalDate.now(),
+      20,
+      5,
+      9,
+      15,
+      8);
+      // When : Comportement à tester, en pratique une (ou des) méthode(s) à exécuter
+      LinkedHashSet<LocalDate> resNb = monSalarie.calculeJoursDeCongeDecomptesPourPlage(
+              LocalDate.parse(dateDebut),
+              LocalDate.parse(dateFin));
+      // Then : Comparaison du résultat de la méthode ou de l'état final avec celui attendu
+      Assertions.assertEquals(expectedNb,resNb.size());
+                        }
 }
