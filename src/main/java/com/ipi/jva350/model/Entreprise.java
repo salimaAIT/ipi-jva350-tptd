@@ -150,6 +150,7 @@ public final class Entreprise {
         return !d.isBefore(debut) && !d.isAfter(fin);
     }
 
+
     public void ajouterJourFerie(LocalDate of) {
     }
 }
