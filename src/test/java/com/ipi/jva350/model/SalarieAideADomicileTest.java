@@ -64,7 +64,7 @@ public class SalarieAideADomicileTest {
     }
 
 
-   /* @Test
+    @Test
     @ParameterizedTest
     public void testCalculeJoursDeCongeDecomptesPourPlage() {
         SalarieAideADomicile monSalarie = new SalarieAideADomicile(
@@ -81,7 +81,7 @@ public class SalarieAideADomicileTest {
                 LocalDate.of(2023, 12, 28));
         // Then : Comparaison du résultat de la méthode ou de l'état final avec celui attendu
         assertEquals(9, res.size());
-    }*/
+    }
 
 
     //Tests paramétrés

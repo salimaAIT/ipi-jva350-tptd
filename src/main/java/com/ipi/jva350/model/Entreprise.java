@@ -152,5 +152,6 @@ public final class Entreprise {
 
 
     public void ajouterJourFerie(LocalDate of) {
+        //methode pour les jours fériers
     }
 }
